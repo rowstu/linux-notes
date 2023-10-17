@@ -1,2 +1,8 @@
 # linux-commandline-reference
-common command usage
+common commands usage
+
+
+Check SSHD before restart
+```
+sshd -t
+```
