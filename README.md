@@ -1,4 +1,4 @@
-# linux-commandline-reference
+# linux Notes
 common commands usage
 
 
@@ -9,4 +9,9 @@ sshd -t
 Print ssh settings for a host
 ```
 ssh -G <hostname>
+```
+
+vim make all text lower case
+```
+:%s/.*/\L&/
 ```
