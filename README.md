@@ -23,3 +23,7 @@ Convert to lowercase
 ```
 tr '[:upper:]' '[:lower:]' < input.txt > output.txt
 ```
+Remove whitespace
+```
+tr -d ' ' < input.file > output.file
+```
