@@ -1,9 +1,10 @@
 # linux Notes
 common commands usage
 
-
-
-
+When you've forgotten to open a file with sudo
+```
+:w !sudo tee %
+```
 vim make all text lower case
 ```
 :%s/.*/\L&/
