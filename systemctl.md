@@ -49,7 +49,7 @@ journalctl -p warning --since=2023-11-01 00:00:00
 ```
 Show log from a particular unit
 ```
-journal -u httpd.service
+journalctl -u httpd.service
 ```
 Show failed services
 ```
