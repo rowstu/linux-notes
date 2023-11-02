@@ -6,3 +6,7 @@ find . -type f -size +100M
 ```
 du -aBm / 2>/dev/null | sort -nr | head -n 10
 ```
+Find filename but hide errors
+```
+find . -type f -name <filename> 2>/dev/null
+```
