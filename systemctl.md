@@ -29,9 +29,9 @@ systemctl daemon-reload
 ```
 Switch to different runlevel
 ```
-runlevel1.target
-runlevel3.target or multiuser.target
-runlevel5.target or graphical target
+systemctl isolate runlevel1.target
+systemctl isolate multiuser.target
+systemctl isolate graphical.target
 ```
 Change default run-level
 ```
