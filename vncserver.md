@@ -1,6 +1,9 @@
 # Add VNCServer to Kali
-
-Add to crontab
+Install if not present
+```
+sudo apt install tightvncserver
+```
+Add to crontab to ensure it starts at boot
 ```
 @reboot USER=pat /usr/bin/vncserver :1
 ```
@@ -12,7 +15,7 @@ unset DBUS_SESSION_BUS_ADDRESS
 startxfce4 &
 ```
 
-Install this for clipboard
+Install this for clipboard copy/paste
 ```
 sudo apt-get install autocutsel
 ```
