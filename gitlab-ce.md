@@ -32,3 +32,34 @@ gitlab-ctl status
 gitlab-ctl stop
 gitlab-ctl start
 ```
+# Migration
+Commands to migrate from old server to new server
+### Old Server
+```
+gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+mkdir gitlab-migration
+cp /etc/gitlab/gitlab.rb gitlab-migration
+cp /etc/gitlab/gitlab-secrets.json gitlab-migration
+cp -R /etc/gitlab/ssl gitlab-migration
+gitlab-rake gitlab:backup:create
+cp /var/opt/gitlab/backups/<backupreference>_gitlab_backup.tar gitlab-migration
+```
+Copy the backups from the old server to the new server
+### New Server
+```
+cd gitlab-migration
+cp -R ssl /etc/gitLab/
+cp gitlab.rb /etc/gitlab/
+cp gitlab-secrets.json /etc/gitlab
+gitlab-ctl reconfigure
+cp <backupreference>_gitlab_backup.tar /var/opt/gitlab/backups/
+chown git:git /var/opt/gitlab/backups/<backupreference>_gitlab_backup.tar
+gitlab-ctl stop unicorn
+gitlab-ctl stop sidekiq
+gitlab-rake gitlab:backup:restore BACKUP=<backupreference>
+gitlab-ctl start
+gitlab-rake gitlab:check SANITIZE=true
+```
+Test by setting the old URL to the new servers IP in local hosts file then migrate the real URL in DNS. Ensure things like Postfix and other services that are integrated on the old server are functioning on the new server.
+
