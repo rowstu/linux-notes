@@ -27,10 +27,16 @@ edit `/etc/gitlab/gitlab.rb` with specific settings
 
 ### Useful Commands
 ```
+yum search gitlab-ce --showduplicates
 gitlab-ctl reconfigure
 gitlab-ctl status
 gitlab-ctl stop
 gitlab-ctl start
+gitlab-rake gitlab:doctor:secrets
+gitlab-rake gitlab:artifacts:check
+gitlab-rake gitlab:check SANITIZE=true
+gitlab-rake gitlab:lfs:check
+gitlab-rake gitlab:uploads:check
 ```
 # Migration
 Commands to migrate from old server to new server
@@ -38,6 +44,7 @@ Commands to migrate from old server to new server
 ```
 gitlab-ctl stop unicorn
 gitlab-ctl stop sidekiq
+gitlab-ctl stop puma
 mkdir gitlab-migration
 cp /etc/gitlab/gitlab.rb gitlab-migration
 cp /etc/gitlab/gitlab-secrets.json gitlab-migration
