@@ -10,3 +10,8 @@ Find filename but hide errors
 ```
 find . -type f -name <filename> 2>/dev/null
 ```
+Use ncdu to scan through the current directory and visually show you large files
+```
+pacman -S ncdu # install it first
+ncdu
+```
