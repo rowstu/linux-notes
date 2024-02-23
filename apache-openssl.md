@@ -69,3 +69,8 @@ cp <current cert> old/<backup.conf.date>
 cp $CERT /path/to/existing/cert.crt
 ```
 11. Do another graceful restart and then check everything is still running and the new cert is displayed in the browser.
+
+Use open_ssl to get expiry date
+```
+echo | openssl s_client -connect www.linux.com:443 2>/dev/null | openssl x509 -noout -enddate
+```
