@@ -1,3 +1,7 @@
+Summarise all changes
+```
+git log --pretty=format:"%h - %an, %ar : %s" --stat | head -n 500 | fabric -sp summarize_git_changes
+```
 
 Commit all edited ﬁles and add a message
 ```
