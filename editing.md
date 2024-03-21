@@ -20,4 +20,6 @@ tr '[:upper:]' '[:lower:]' < input.txt > output.txt
 Remove whitespace
 ```
 tr -d ' ' < input.file > output.file
+# or
+sed -i 's/^[[:space:]]*//' file.txt
 ```
